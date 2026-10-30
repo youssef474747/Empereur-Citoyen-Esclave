@@ -38,6 +38,57 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 
 
      <main class="max-w-7xl mx-auto px-6 py-10">
+
+        <main class="max-w-4xl mx-auto px-6 py-10">
+
+  <h1 class="text-3xl font-bold text-blue-950 mb-8">
+    Mon profil
+  </h1>
+
+  <section class="bg-white rounded-xl shadow-md p-8">
+
+    <div class="flex flex-col sm:flex-row items-center gap-6">
+
+      <img
+        id="profileAvatar"
+        src="images/lion.png"
+        alt="Avatar"
+        class="w-28 h-28 rounded-full object-cover border-4 border-blue-200"
+      >
+
+      <div class="text-center sm:text-left">
+        <h2 id="profilePseudo" class="text-2xl font-bold">
+          Youssef
+        </h2>
+
+        <p class="text-gray-500">Joueur</p>
+      </div>
+
+    </div>
+
+    <hr class="my-8">
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+      <div class="bg-blue-50 p-5 rounded-lg text-center">
+        <p class="text-gray-500">Parties jouées</p>
+        <p id="gamesPlayed" class="text-2xl font-bold">0</p>
+      </div>
+
+      <div class="bg-green-50 p-5 rounded-lg text-center">
+        <p class="text-gray-500">Victoires</p>
+        <p id="wins" class="text-2xl font-bold">0</p>
+      </div>
+
+      <div class="bg-yellow-50 p-5 rounded-lg text-center">
+        <p class="text-gray-500">Points</p>
+        <p id="totalPoints" class="text-2xl font-bold">0</p>
+      </div>
+
+    </div>
+
+  </section>
+</main>
          
         <section class="mb-8">
             
@@ -66,14 +117,47 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     maxlength="15"
     required class="w-full border border-gray-300 rounded-lg px-4 py-3">
 
-
-
 </div>
 
-            </form>
+<div>
+    <label for="avatar" class="block font-semibold mb-3">
+        Choisir un avatar
+    </label>
+    <select
+    id="avatar" class="w-full border border-gray-300 rounded-lg px-4 py-3">
+    <option value="./images/avatars/king.png" class="flex gap-2"><img src="./images/">Roi</option>
+    <option value="./images/avatars/lion.png" class="flex gap-2"><img src="./images/lion.png">lion</option>
+    <option value="./images/avatars/warior.png" class="flex gap-2">guérriie<span><img class="w-5 h-5" src="./images/knight.png"></span></option>
+    <option value="./images/avatars/dragon.png" class="flex gap-2"><img src="./images/new.png">dragon</option>
+
+    <p id="ereurMessage" class="text bg-red-500 text-sm"></p>
+    <button
+    type="submit" class="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold">
+    Ajouter le joueur
+
+</button>
+
+         </form>
          </section>
 
+         <!-- listes des joueurs -->
 
+         <section>
+            <div class="flex justify-between items-center mb-5">
+                <h2 class="text-xxl font-bold text-blue-950">
+                    Liste des joueurs
+                </h2>
+                <span id="playersCount" class="bg-blue-100 text-blue-800 px-3 py-1 rounded full">
+                    0 joueus
+                </span>
+            </div>
+            
+            <div id="playersListe" class="gird grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            </div>
+
+         </section>
+          
     
      </main>
 
