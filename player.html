@@ -5,28 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profiles</title>
     <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
-<body class="bg-blue-600 text-amber-50 min-h-screen">
+<body class="bg-blue-200 text-blue-950 min-h-screen">
 
-    <h1>Mes profiles</h1>
-
-    <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/player.js"></script>
 
     <!-- header -->
      <header class="bg-blue-800 border-b border-gray-700">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold">
-                Empereur<span class="text bg-yellow-400" ></span>Esclave
+             <a href="player.html" class="flex items-center gap-3 text-xl font-bold">
+    <i class="fa-solid fa-chess-king text-yellow-400 text-2xl"></i>
+    <span>Empereur - Esclave - Citoyen</span>
+</a>
 
-            </a>
-            <nav class="hidden md :flex gap-6 text-gray-300">
+            <nav class="hidden md:flex gap-6 text-gray-300">
                 <a href="index.html" class="hover:text-yellow-400">Accueil</a>
-                <a href="player.html" class="text-yellow-400">profiles</a>
+                <a href="player.html" class="hover:text-yellow-400">profiles</a>
                 <a href="game.html" class="hover:text-yellow-400">jouer</a>
                 <a href="historique.html" class="hover:text-yellow-400">historique</a>
 
             </nav>
-            <div class="text-sm text-gray-300">
+            <div class="text-sm text-blue-950">
                 Gestion des joueurs
             </div>
 
@@ -35,8 +37,65 @@
      </header>
 
 
+     <main class="max-w-7xl mx-auto px-6 py-10">
+         
+        <section class="mb-8">
+            
+        <h1 class="text-3xl font-bold text-blue-950 mb-3 ">Gestion des joueurs</h1>
+        <p class="text-gray-600 mt-2">
+            Gérez vos profile de joueurs
+        </p>
+        </section>
+        
+        <!-- add player -->
+
+         <section class="bg-white p-6 rounded-xl shadow-md mb-10">
+            <h2 class="text-xl font-bold text-blue-950 mb-5">
+                Ajouter un jouer
+            </h2>
+            <form id="playerForm" class="space-y-4">
+
+<div>
+    <label for="pseudo" class="block font-semibold mb-4">
+        pseudo
+    </label>
+    <input type="text"
+    id="pseudo"
+    placeholder="Entrer votre pseudo"
+    minlength="3"
+    maxlength="15"
+    required class="w-full border border-gray-300 rounded-lg px-4 py-3">
 
 
 
-</body>
-</html>
+</div>
+
+            </form>
+         </section>
+
+
+    
+     </main>
+
+
+
+
+
+
+
+
+
+
+
+
+     <!-- <footer> -->
+        <!-- <footer class="bg-black text-gray-300 py-5 mt-12 ">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <p class="text-sm">
+    © 2026 <span class="text-yellow-400 font-bold">Empereur - Esclave - Citoyen</span>
+    | Projet YouCode
+</p>
+            </div>
+
+        </footer>
+ -->
