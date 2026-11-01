@@ -95,118 +95,109 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
             Gérez vos profile de joueurs
         </p>
         </section>
-        
-        <!-- add player -->
+        <!-- Add player -->
+<section class="bg-white p-6 rounded-xl shadow-md mb-10">
 
-         <section class="bg-white p-6 rounded-xl shadow-md mb-10">
-            <h2 class="text-xl font-bold text-blue-950 mb-5">
-                Ajouter un jouer
-            </h2>
-            <form id="playerForm" class="space-y-4">
+    <h2 class="text-xl font-bold text-blue-950 mb-5">
+        Ajouter un joueur
+    </h2>
 
-<div>
-    <label for="pseudo" class="block font-semibold mb-4">
-        pseudo
-    </label>
-    <input type="text"
-    id="pseudo"
-    placeholder="Entrer votre pseudo"
-    minlength="3"
-    maxlength="15"
-    required class="w-full border border-gray-300 rounded-lg px-4 py-3">
+    <form id="playerForm" class="space-y-4">
 
-</div>
+        <!-- Pseudo -->
+        <div>
+            <label for="pseudo" class="block font-semibold mb-4">
+                Pseudo
+            </label>
 
-<div>
-    <p class="font-semibold mb-3">Choisir votre avatar</p>
+            <input
+                type="text"
+                id="pseudo"
+                placeholder="Entrer votre pseudo"
+                minlength="3"
+                maxlength="15"
+                required
+                class="w-full border border-gray-300 rounded-lg px-4 py-3"
+            >
+        </div>
 
-    <div class="flex flex-wrap gap-4">
+        <!-- Avatar -->
+        <div>
+            <p class="font-semibold mb-3">Choisir votre avatar</p>
 
-        <label class="cursor-pointer">
-            <input type="radio" name="avatar" value="king.png" class="peer sr-only" required>
+            <div class="flex flex-wrap gap-4">
 
-            <div class="p-2 rounded-xl border-2 border-gray-300
-                        hover:border-blue-
-                        peer-checked:border-blue-600
-                        peer-checked:bg-blue-100
-                        transition">
-                <img src="images/2701700.png"
-                     alt="King"
-                     class="w-16 h-16 rounded-lg object-cover">
+                <label class="cursor-pointer">
+                    <input type="radio" name="avatar" value="king.png" class="peer sr-only" required>
+
+                    <div class="p-2 rounded-xl border-2 border-gray-300 hover:border-blue-400 peer-checked:border-blue-600 peer-checked:bg-blue-100 transition">
+                        <img src="images/2701700.png" alt="King" class="w-16 h-16 rounded-lg object-cover">
+                    </div>
+                    <p class="text-center mt-1 font-semibold">King</p>
+                </label>
+
+                <label class="cursor-pointer">
+                    <input type="radio" name="avatar" value="warior.png" class="peer sr-only">
+
+                    <div class="p-2 rounded-xl border-2 border-gray-300 hover:border-blue-400 peer-checked:border-blue-600 peer-checked:bg-blue-100 transition">
+                        <img src="images/knight.png" alt="Warrior" class="w-16 h-16 rounded-lg object-cover">
+                    </div>
+                    <p class="text-center mt-1 font-semibold">Warrior</p>
+                </label>
+
+                <label class="cursor-pointer">
+                    <input type="radio" name="avatar" value="lion.png" class="peer sr-only">
+
+                    <div class="p-2 rounded-xl border-2 border-gray-300 hover:border-blue-400 peer-checked:border-blue-600 peer-checked:bg-blue-100 transition">
+                        <img src="images/lion.png" alt="Lion" class="w-16 h-16 rounded-lg object-cover">
+                    </div>
+                    <p class="text-center mt-1 font-semibold">Lion</p>
+                </label>
+
+                <label class="cursor-pointer">
+                    <input type="radio" name="avatar" value="dragon.png" class="peer sr-only">
+
+                    <div class="p-2 rounded-xl border-2 border-gray-300 hover:border-blue-400 peer-checked:border-blue-600 peer-checked:bg-blue-100 transition">
+                        <img src="images/new.png" alt="Dragon" class="w-16 h-16 rounded-lg object-cover">
+                    </div>
+                    <p class="text-center mt-1 font-semibold">Dragon</p>
+                </label>
+
             </div>
-            <p class="text-center mt-1 font-semibold">King</p>
-        </label>
+        </div>
 
-        <label class="cursor-pointer">
-            <input type="radio" name="avatar" value="warior.png" class="peer sr-only">
+        <!-- Error message -->
+        <p id="errorMessage" class="text-red-600 text-sm"></p>
 
-            <div class="p-2 rounded-xl border-2 border-gray-300
-                        hover:border-blue-400
-                        peer-checked:border-blue-600
-                        peer-checked:bg-blue-100
-                        transition">
-                <img src="images/knight.png"
-                     alt="Warrior"
-                     class="w-16 h-16 rounded-lg object-cover">
-            </div>
-            <p class="text-center mt-1 font-semibold">Warrior</p>
-        </label>
+        <!-- Submit button -->
+        <button
+            type="submit"
+            class="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold"
+        >
+            Ajouter le joueur
+        </button>
 
-        <label class="cursor-pointer">
-            <input type="radio" name="avatar" value="lion.png" class="peer sr-only">
+    </form>
 
-            <div class="p-2 rounded-xl border-2 border-gray-300
-                        hover:border-blue-400
-                        peer-checked:border-blue-600
-                        peer-checked:bg-blue-100
-                        transition">
-                <img src="images/lion.png"
-                     alt="Lion"
-                     class="w-16 h-16 rounded-lg object-cover">
-            </div>
-            <p class="text-center mt-1 font-semibold">Lion</p>
-        </label>
+</section>
 
-        <label class="cursor-pointer">
-            <input type="radio" name="avatar" value="dragon.png" class="peer sr-only">
+<!-- Liste des joueurs -->
+<section>
 
-            <div class="p-2 rounded-xl border-2 border-gray-300
-                        hover:border-blue-400
-                        peer-checked:border-blue-600
-                        peer-checked:bg-blue-100
-                        transition">
-                <img src="images/new.png"
-                     alt="Dragon"
-                     class="w-16 h-16 rounded-lg object-cover">
-            </div>
-            <p class="text-center mt-1 font-semibold">Dragon</p>
-        </label>
+    <div class="flex justify-between items-center mb-5">
+        <h2 class="text-2xl font-bold text-blue-950">
+            Liste des joueurs
+        </h2>
 
+        <span id="playersCount" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+            0 joueurs
+        </span>
     </div>
-</div>
-    
 
+    <div id="playersList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    </div>
 
-         <!-- listes des joueurs -->
-
-         <section>
-            <div class="flex justify-between items-center mb-5">
-                <h2 class="text-2xl font-bold text-blue-950">
-                    Liste des joueurs
-                </h2>
-                <span id="playersCount" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
-                    0 joueurs
-                </span>
-            </div>
-            
-            <div id="playersList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            </div>
-
-         </section>
-          
-    
-     </main>
+</section> 
 
 
 
