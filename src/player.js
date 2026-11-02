@@ -93,5 +93,4 @@ playersList.appendChild(playerElement);
 
 playersCount.textContent = players.length + " joueurs";
 playerForm.reset();
-
 });
