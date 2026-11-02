@@ -18,6 +18,8 @@
     --color-yellow-400: oklch(85.2% 0.199 91.936);
     --color-green-50: oklch(98.2% 0.018 155.826);
     --color-green-200: oklch(92.5% 0.084 155.995);
+    --color-green-400: oklch(79.2% 0.209 151.711);
+    --color-green-600: oklch(62.7% 0.194 149.214);
     --color-blue-50: oklch(97% 0.014 254.604);
     --color-blue-100: oklch(93.2% 0.032 255.585);
     --color-blue-200: oklch(88.2% 0.059 254.128);
@@ -384,6 +386,9 @@
   .bg-green-50 {
     background-color: var(--color-green-50);
   }
+  .bg-green-400 {
+    background-color: var(--color-green-400);
+  }
   .bg-red-600 {
     background-color: var(--color-red-600);
   }
@@ -528,6 +533,9 @@
     }
     .hover\:bg-blue-800:hover {
       background-color: var(--color-blue-800);
+    }
+    .hover\:bg-green-600:hover {
+      background-color: var(--color-green-600);
     }
     .hover\:bg-red-700:hover {
       background-color: var(--color-red-700);

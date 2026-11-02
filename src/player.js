@@ -5,6 +5,7 @@ let playersCount = document.getElementById("playersCount");
 let errorMessage = document.getElementById("errorMessage");
 let existingMessage = document.getElementById("existingMessage");
 let players =[];
+let editingPlayer = null ;
 
 playerForm.addEventListener("submit",function(event){
     event.preventDefault();
@@ -21,7 +22,8 @@ if(pseudo.length <16 && pseudo.length >2 && regex.test(pseudo)){
     return;
 }
 let exitingPlayer = players.find(function(player){
-    return player.pseudo.toLowerCase() === pseudo.toLowerCase();
+    return player.pseudo.toLowerCase() === pseudo.toLowerCase()
+        && player !== editingPlayer;
 });
 if(exitingPlayer){
     existingMessage.textContent = "ce pseudo existe déja";
@@ -43,17 +45,26 @@ console.log("avatar choisi :",avatar);
 
 
 // creation de joueur
+let player;
 
-let player ={
-    pseudo : pseudo,
-    avatar : avatar ,
-};
-console.log("Nouveu joueur :",player);
+if (editingPlayer === null) {
 
-players.push(player);
-console.log("Nouveau joueur :",player);
-console.log("tout les joueurs :",players);
+    // Ajouter un nouveau joueur
+    player = {
+        pseudo: pseudo,
+        avatar: avatar
+    };
 
+    players.push(player);
+
+} else {
+
+    // Modifier le joueur existant
+    editingPlayer.pseudo = pseudo;
+    editingPlayer.avatar = avatar;
+
+    player = editingPlayer;
+}
 // afficher le joueur
 
 let playerElement = document.createElement("div");
@@ -93,4 +104,22 @@ playersList.appendChild(playerElement);
 
 playersCount.textContent = players.length + " joueurs";
 playerForm.reset();
+
+// modifie
+
+let editButton = document.createElement("button")
+editButton.textContent ="Modifier";
+editButton.className ="bg-green-400 text-white px-4 py-2 rounded-lg hover:bg-green-600 cursor-pointer";
+editButton.addEventListener("click",function(){
+    editingPlayer = player ;
+    pseudoInput.value = player.pseudo ;
+    let avatarRadio = document.querySelector(
+        `input[name="avatar"][value="${player.avatar}"]`
+    );
+    if(avatarRadio){
+        avatarRadio.checked = true ;
+    }
+   
+})
+ playerElement.appendChild(editButton);
 });
