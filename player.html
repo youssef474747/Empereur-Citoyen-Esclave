@@ -128,10 +128,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         <div>
             <p class="font-semibold mb-3">Choisir votre avatar</p>
 
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-4 ">
 
                 <label class="cursor-pointer">
-                    <input type="radio" name="avatar" value="king.png" class="peer sr-only" required>
+                    <input type="radio" name="avatar" value="images/images.png" class="peer sr-only" required>
 
                     <div class="p-2 rounded-xl border-2 border-gray-300 hover:border-blue-400 peer-checked:border-blue-600 peer-checked:bg-blue-100 transition">
                         <img src="images/images.png" alt="King" class="w-16 h-16 rounded-lg object-cover">
@@ -140,7 +140,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
                 </label>
 
                 <label class="cursor-pointer">
-                    <input type="radio" name="avatar" value="warior.png" class="peer sr-only">
+                    <input type="radio" name="avatar" value="images/knight.png" class="peer sr-only">
 
                     <div class="p-2 rounded-xl border-2 border-gray-300 hover:border-blue-400 peer-checked:border-blue-600 peer-checked:bg-blue-100 transition">
                         <img src="images/knight.png" alt="Warrior" class="w-16 h-16 rounded-lg object-cover">
@@ -149,7 +149,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
                 </label>
 
                 <label class="cursor-pointer">
-                    <input type="radio" name="avatar" value="lion.png" class="peer sr-only">
+                    <input type="radio" name="avatar" value="images/lion.png" class="peer sr-only">
 
                     <div class="p-2 rounded-xl border-2 border-gray-300 hover:border-blue-400 peer-checked:border-blue-600 peer-checked:bg-blue-100 transition">
                         <img src="images/lion.png" alt="Lion" class="w-16 h-16 rounded-lg object-cover">
@@ -158,7 +158,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
                 </label>
 
                 <label class="cursor-pointer">
-                    <input type="radio" name="avatar" value="dragon.png" class="peer sr-only">
+                    <input type="radio" name="avatar" value="images/new.png" class="peer sr-only">
 
                     <div class="p-2 rounded-xl border-2 border-gray-300 hover:border-blue-400 peer-checked:border-blue-600 peer-checked:bg-blue-100 transition">
                         <img src="images/new.png" alt="Dragon" class="w-16 h-16 rounded-lg object-cover">
@@ -171,6 +171,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 
         <!-- Error message -->
         <p id="errorMessage" class="text-red-600 text-sm"></p>
+        <p id="existingMessage" class="text-orange-600 text-sm"></p>
 
         <!-- Submit button -->
         <button
