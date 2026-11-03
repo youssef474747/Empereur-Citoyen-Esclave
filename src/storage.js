@@ -9,3 +9,6 @@ function loadPlayers(){
 
     return JSON.parse(savedPlayers);
 }
+export function clearPlayers(){
+    localStorage.removeItem("players");
+}

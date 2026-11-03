@@ -60,7 +60,7 @@ if (editingPlayer === null) {
 
 } else {
 
-    // Modifier le joueur existant
+    // Modifier le joueur existan
     editingPlayer.pseudo = pseudo;
     editingPlayer.avatar = avatar;
 
