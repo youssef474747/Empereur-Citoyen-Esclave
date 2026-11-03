@@ -7,6 +7,7 @@ let existingMessage = document.getElementById("existingMessage");
 let players =[];
 let editingPlayer = null ;
 
+
 playerForm.addEventListener("submit",function(event){
     event.preventDefault();
     console.log("form submitted");
