@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profiles</title>
+    <title>Empereur - Esclave - Citoyen</title>
     <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-blue-200 text-amber-50 min-h-screen">
-
-    <h1>Mes profiles</h1>
-
-    <script type="module" src="./src/main.js"></script>
 
     <!-- header -->
      <header class="bg-blue-800 border-b border-gray-700">
@@ -19,8 +16,8 @@
     <i class="fa-solid fa-chess-king text-yellow-400 text-2xl"></i>
     <span>Empereur - Esclave - Citoyen</span>
 </a>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-            </a>
+
+        
             <nav class="hidden md:flex gap-6 text-gray-300">
                 <a href="index.html" class="hover:text-yellow-400">Accueil</a>
                 <a href="player.html" class="hover:text-yellow-400">profiles</a>
@@ -36,4 +33,32 @@
 
      </header>
 
+     <!-- main -->
+<main class="max-w-7xl mx-auto px-4 py-4">
+    <h1 class="text-3xl text-blue-950 font-bold text-center mb-8">La partie</h1>
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLeBPRniTTQ-ULFBPiNflTyjYdZTj2uzzjmbQoPv0ZwQ&s=10');"
+  class=" h-32 py-4 rounded-2xl text-center bg-cover bg-center">
+            <p>Manches</p>
+        <p id="round" class="text-2xl font-bold"> 1 / 12</p>
 
+        </div>
+        
+        <div style="background-image: url('https://c4.wallpaperflare.com/wallpaper/1016/264/841/wasteland-3-ranger-squad-2019-wallpaper-preview.jpg');" class="h-32 py-4 rounded-2xl text-center bg-cover bg-center">
+            <p>Group</p>
+            <p id="group" class="text-2xl font-bold"> 1 / 4</p>
+        </div>
+        <div style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzhqnf28YPaPLcoiIwTMozq4Xx1jolJtvKEixc253Qxg&s=10');" class="h-32 py-4 rounded-2xl text-center bg-cover bg-center">
+            <p>Votre camp</p>
+            <p id="playerCamp" class="text-2xl font-bold">Empereur</p>
+
+        </div>
+        
+        
+        
+
+    </section>
+
+</main>
+</body>
+</html>

@@ -1,10 +1,11 @@
+import { savePlayers, loadPlayers } from "./storage.js";
 let playerForm =document.getElementById("playerForm");
 let pseudoInput =document.getElementById("pseudo");
 let playersList = document.getElementById("playersList");
 let playersCount = document.getElementById("playersCount");
 let errorMessage = document.getElementById("errorMessage");
 let existingMessage = document.getElementById("existingMessage");
-let players =[];
+let players = loadPlayers();
 let editingPlayer = null ;
 
 
@@ -65,7 +66,9 @@ if (editingPlayer === null) {
     editingPlayer.avatar = avatar;
 
     player = editingPlayer;
+    
 }
+savePlayers(players);
 // afficher le joueur
 
 let playerElement = document.createElement("div");
@@ -87,6 +90,7 @@ deleteButton.addEventListener("click", function() {
     players = players.filter(function(item) {
         return item.pseudo !== player.pseudo;
     });
+    savePlayers(players);
 
     playerElement.remove();
 
@@ -108,19 +112,27 @@ playerForm.reset();
 
 // modifie
 
-let editButton = document.createElement("button")
-editButton.textContent ="Modifier";
-editButton.className ="bg-green-400 text-white px-4 py-2 rounded-lg hover:bg-green-600 cursor-pointer";
-editButton.addEventListener("click",function(){
-    editingPlayer = player ;
-    pseudoInput.value = player.pseudo ;
-    let avatarRadio = document.querySelector(
-        `input[name="avatar"][value="${player.avatar}"]`
-    );
-    if(avatarRadio){
-        avatarRadio.checked = true ;
-    }
+// let editButton = document.createElement("button")
+// editButton.textContent ="Modifier";
+// editButton.className ="bg-green-400 text-white px-4 py-2 rounded-lg hover:bg-green-600 cursor-pointer";
+// editButton.addEventListener("click",function(){
+//     editingPlayer = player ;
+//     pseudoInput.value = player.pseudo ;
+//     let avatarRadio = document.querySelector(
+//         `input[name="avatar"][value="${player.avatar}"]`
+//     );
+//     if(avatarRadio){
+//         avatarRadio.checked = true ;
+//     }
    
-})
- playerElement.appendChild(editButton);
-});
+// })
+//  playerElement.appendChild(editButton);
+// });
+// players.forEach(function(player){
+//     let div = document.createElement("div");
+//     div.textContent =player.pseudo ;
+//     playersList.appendChild(div);
+// })
+
+// playersCount.textContent = players.length + " joueurs";
+    

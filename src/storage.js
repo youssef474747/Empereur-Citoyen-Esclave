@@ -1,4 +1,4 @@
-export function savePlayers(){
+export function savePlayers(players){
     localStorage.setItem("players",JSON.stringify(players));
 }
 function loadPlayers(){
