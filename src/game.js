@@ -16,33 +16,34 @@ const cards =[
 let playerCards = [];
 let computerCards = [];
 let playerScore = 0;
-let computerScore = 0;
-let currentRound = 1;
-let currentDuel = 1;
-let playerCamp = "Empereur";
+let computerScore =0 ;
+let currentRound =1 ;
+let courrentDuel =1 ;
+let playerCamp ="Empereur" ;
+
+const playerCardElement =document.getElementById("playerCard");
+const computerCardElement = document.getElementById("computerCards");
+const playerScoreElement = document.getElementById("playerScore");
+const computerScoreElement = document.getElementById("ordinateurScore"):
+const playerPlayedCardElement =document.getElementById("playerPlayedCard");
+const resultElement =document.getElementById("result");
+const startGameButton = document.getElementById("startGame");
+
+// creat hand
 
 function createHand(camp){
-    let hand = [];
-    let citoyen = cards.find(cards=> cards.name === "Citoyen");
-    for (let i = 0; i < 4; i++) {
-        hand.push(citoyen);
-}
-   let specialCard = card.find(card => card.name === camp);
-        hand.push(specialCard);
+    let hand =[];
+    let citoyen =cards.find(card => card.name === citoyen);
+    for(let i = 0; i < 4 ; i++){
+        hand.push(citoyen) ;
+    }
+        let specialCard = cards.find(card => card.name === camp)
+        hand.push(specialCard); 
         return hand;
-}
- playerCards = createHand(playerCamp);
-computerCards = createHand("Esclave");
+    }
 
-function duel(playerCard ,computerCard){
-    if(playerCard.name === computerCard.name){
-        return "Egalité";
-    }
-    if((playerCard.name === "Esclave" && computerCard.name ==="Empereur") ||
-    (playerCard.name === "Empereur" && computerCard.name === "Citoyen") ||
-    (playerCard.name === "Citoyen" && computerCard.name === "Esclave")){
-        return "Victoire";
-    }
-    return "Defaite";
-    }
+    playerCards = createHand(playerCamp);
+    computerCards =createHand("Esclave");
+
+    duel
 
