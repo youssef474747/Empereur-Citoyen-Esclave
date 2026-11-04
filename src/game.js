@@ -27,9 +27,22 @@ function createHand(camp){
     for (let i = 0; i < 4; i++) {
         hand.push(citoyen);
 }
-   let specialCard = cards.find(card => card.name === camp);
+   let specialCard = card.find(card => card.name === camp);
         hand.push(specialCard);
         return hand;
 }
  playerCards = createHand(playerCamp);
 computerCards = createHand("Esclave");
+
+function duel(playerCard ,computerCard){
+    if(playerCard.name === computerCard.name){
+        return "Egalité";
+    }
+    if((playerCard.name === "Esclave" && computerCard.name ==="Empereur") ||
+    (playerCard.name === "Empereur" && computerCard.name === "Citoyen") ||
+    (playerCard.name === "Citoyen" && computerCard.name === "Esclave")){
+        return "Victoire";
+    }
+    return "Defaite";
+    }
+
