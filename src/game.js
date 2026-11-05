@@ -121,3 +121,16 @@ function createHand(camp){
 
     // START GAME
 
+    function startGame(){
+        playerCards = createHand(playerCamp);
+        computerCards = createHand("Esclave");
+        playerScore = 0 ;
+        computerScore = 0;
+        courrentDuel = 1;
+        playerScoreElement.textContent = playerScore ;
+        computerScoreElement.textContent = computerScore ;
+        resultElement.textContent ="";
+        displplay();
+    }
+ 
+    
