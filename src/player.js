@@ -6,7 +6,6 @@ let playersCount = document.getElementById("playersCount");
 let errorMessage = document.getElementById("errorMessage");
 let existingMessage = document.getElementById("existingMessage");
 let players = loadPlayers();
-let editingPlayer = null ;
 
 
 playerForm.addEventListener("submit",function(event){
@@ -15,7 +14,7 @@ playerForm.addEventListener("submit",function(event){
     
 let pseudo = pseudoInput.value.trim();
 let regex =/^[a-zA-Z0-9]+$/ ;
-if(pseudo.length <16 && pseudo.length >2 && regex.test(pseudo)){
+if (pseudo.length >= 3 && pseudo.length <= 15 && regex.test(pseudo)){
     console.log("pseudo valide");
     errorMessage.textContent="";
 }else{
@@ -24,8 +23,7 @@ if(pseudo.length <16 && pseudo.length >2 && regex.test(pseudo)){
     return;
 }
 let exitingPlayer = players.find(function(player){
-    return player.pseudo.toLowerCase() === pseudo.toLowerCase()
-        && player !== editingPlayer;
+    return player.pseudo.toLowerCase() === pseudo.toLowerCase();
 });
 if(exitingPlayer){
     existingMessage.textContent = "ce pseudo existe déja";
@@ -45,29 +43,36 @@ if(!selectedAvatar){
 let avatar =selectedAvatar.value ; 
 console.log("avatar choisi :",avatar);
 
+let player = {
+    pseudo: pseudo,
+    avatar: avatar
+};
+
+players.push(player);
+
 
 // creation de joueur
-let player;
+// let player;
 
-if (editingPlayer === null) {
+// if (editingPlayer === null) {
 
-    // Ajouter un nouveau joueur
-    player = {
-        pseudo: pseudo,
-        avatar: avatar
-    };
+//     // Ajouter un nouveau joueur
+//     player = {
+//         pseudo: pseudo,
+//         avatar: avatar
+//     };
 
-    players.push(player);
+//     players.push(player);
 
-} else {
+// } else {
 
-    // Modifier le joueur existan
-    editingPlayer.pseudo = pseudo;
-    editingPlayer.avatar = avatar;
+//     // Modifier le joueur existan
+//     editingPlayer.pseudo = pseudo;
+//     editingPlayer.avatar = avatar;
 
-    player = editingPlayer;
+//     player = editingPlayer;
     
-}
+// }
 savePlayers(players);
 // afficher le joueur
 
@@ -108,7 +113,9 @@ playerElement.appendChild(deleteButton);
 playersList.appendChild(playerElement);
 
 playersCount.textContent = players.length + " joueurs";
+
 playerForm.reset();
+})
 
 // modifie
 
@@ -135,4 +142,3 @@ playerForm.reset();
 // })
 
 // playersCount.textContent = players.length + " joueurs";
-    

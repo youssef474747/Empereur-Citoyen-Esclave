@@ -295,6 +295,9 @@
   .h-32 {
     height: calc(var(--spacing) * 32);
   }
+  .h-36 {
+    height: calc(var(--spacing) * 36);
+  }
   .h-40 {
     height: calc(var(--spacing) * 40);
   }
@@ -303,6 +306,9 @@
   }
   .h-56 {
     height: calc(var(--spacing) * 56);
+  }
+  .h-full {
+    height: 100%;
   }
   .min-h-3 {
     min-height: calc(var(--spacing) * 3);
@@ -315,6 +321,9 @@
   }
   .w-16 {
     width: calc(var(--spacing) * 16);
+  }
+  .w-24 {
+    width: calc(var(--spacing) * 24);
   }
   .w-28 {
     width: calc(var(--spacing) * 28);

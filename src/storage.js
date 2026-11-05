@@ -1,7 +1,7 @@
 export function savePlayers(players){
     localStorage.setItem("players",JSON.stringify(players));
 }
-function loadPlayers(){
+export function loadPlayers(){
     let savedPlayers = localStorage.getItem("players");
     if(savedPlayers === null){
         return [];
