@@ -1,19 +1,11 @@
 
 const cards = [
-    {
-        name: "Empereur",
-        image: "./images/king.jpg",
-    },
-    {
-        name: "Citoyen",
-        image: "./images/citoyen.jpg",
-    },
-    {
-        name: "Esclave",
-        image: "./images/slave.jpg",
-    },
+    { name: "Empereur", image: "./images/king.jpg" },
+    { name: "Citoyen", image: "./images/citoyen.jpg" },
+    { name: "Esclave", image: "./images/slave.jpg" },
 ];
 
+// État du jeu
 let playerCards = [];
 let computerCards = [];
 
@@ -31,25 +23,9 @@ let firstPlayer = "Empereur";
 let gameStarted = false;
 let duelLocked = false;
 
-// HTML elements
-const playerCardsElement = document.getElementById("playerCards");
-const computerCardsElement = document.getElementById("computerCards");
+let computerChoice = null;
 
-const playerScoreElement = document.getElementById("playerScore");
-const computerScoreElement = document.getElementById("ordinateurScore");
-
-const playerPlayedCardElement = document.getElementById("playerPlayedCard");
-const computerPlayedCardElement = document.getElementById("computerPlayedCard");
-
-const resultElement = document.getElementById("result");
-const startGameButton = document.getElementById("startGame");
-
-const roundElement = document.getElementById("round");
-const groupElement = document.getElementById("group");
-const playerCampElement = document.getElementById("playerCamp");
-const firstPlayerElement = document.getElementById("firstPlayer");
-
-// CREATE HAND
+// Créer les cartes d'un camp
 function createHand(camp) {
     const citoyen = cards.find(card => card.name === "Citoyen");
     const specialCard = cards.find(card => card.name === camp);
@@ -63,7 +39,7 @@ function createHand(camp) {
     ];
 }
 
-// DUEL RULES
+// Vérifier le résultat du duel
 function duel(playerCard, computerCard) {
     if (playerCard.name === computerCard.name) {
         return "égalité";
@@ -80,240 +56,12 @@ function duel(playerCard, computerCard) {
     return "défaite";
 }
 
-// COMPUTER PLAY
+// Choisir une carte aléatoire
 function computerPlay() {
     return Math.floor(Math.random() * computerCards.length);
 }
 
-// UPDATE FIRST PLAYER
-function updateFirstPlayer() {
-    if (firstPlayerElement) {
-        firstPlayerElement.textContent =
-            firstPlayer === playerCamp
-                ? "Vous commencez"
-                : "Ordinateur commence";
-    }
-}
-
-// UPDATE INFORMATION
-function updateInformation() {
-    playerScoreElement.textContent = playerScore;
-    computerScoreElement.textContent = computerScore;
-
-    if (roundElement) {
-        roundElement.textContent = currentRound;
-    }
-
-    if (groupElement) {
-        groupElement.textContent = Math.ceil(currentRound / 3);
-    }
-
-    if (playerCampElement) {
-        playerCampElement.textContent = playerCamp;
-    }
-
-    updateFirstPlayer();
-}
-
-// DISPLAY CARDS
-function displayCards() {
-    playerCardsElement.innerHTML = "";
-    computerCardsElement.innerHTML = "";
-
-    playerCards.forEach((card, index) => {
-        const button = document.createElement("button");
-
-        button.type = "button";
-        button.disabled = duelLocked || !gameStarted;
-
-        button.innerHTML = `
-            <img
-                src="${card.image}"
-                alt="${card.name}"
-                class="w-24 h-36 object-cover rounded-xl"
-            >
-        `;
-
-        button.addEventListener("click", () => {
-            playDuel(index);
-        });
-
-        playerCardsElement.appendChild(button);
-    });
-
-    computerCards.forEach(() => {
-        const card = document.createElement("div");
-
-        card.className = "w-24 h-36 bg-yellow-400 rounded-xl flex items-center justify-center text-blue-950 font-bold";
-
-        card.textContent = "?";
-
-        computerCardsElement.appendChild(card);
-    });
-}
-
-// END GAME
-function endGame() {
-    gameStarted = false;
-    duelLocked = true;
-
-    playerCardsElement.innerHTML = "";
-    computerCardsElement.innerHTML = "";
-
-    if (playerScore > computerScore) {
-        resultElement.textContent =
-            "Félicitations ! Vous avez gagné la partie.";
-    } else if (computerScore > playerScore) {
-        resultElement.textContent =
-            "L'ordinateur a gagné la partie.";
-    } else {
-        resultElement.textContent = "Match nul !";
-    }
-
-    if (firstPlayerElement) {
-        firstPlayerElement.textContent = "Partie terminée";
-    }
-}
-
-// NEXT ROUND
-function nextRound() {
-    currentRound++;
-
-    if (currentRound > 12) {
-        endGame();
-        return;
-    }
-
-    // Change camps after rounds 3, 6 and 9
-    if ((currentRound - 1) % 3 === 0) {
-        playerCamp =
-            playerCamp === "Empereur" ? "Esclave" : "Empereur";
-
-        computerCamp =
-            computerCamp === "Empereur" ? "Esclave" : "Empereur";
-    }
-
-    playerCards = createHand(playerCamp);
-    computerCards = createHand(computerCamp);
-
-    currentDuel = 1;
-    firstPlayer = "Empereur";
-
-    playerPlayedCardElement.innerHTML = "";
-    computerPlayedCardElement.innerHTML = "";
-
-    resultElement.textContent = "Manche " + currentRound;
-
-    updateInformation();
-    displayCards();
-}
-
-// PLAY DUEL
-function playDuel(playerIndex) {
-    if (!gameStarted || duelLocked) return;
-
-    if (
-        playerIndex < 0 ||
-        playerIndex >= playerCards.length ||
-        computerCards.length === 0
-    ) {
-        return;
-    }
-
-    duelLocked = true;
-    displayCards();
-
-    const playerCard = playerCards[playerIndex];
-    const computerIndex = computerPlay();
-    const computerCard = computerCards[computerIndex];
-
-    const result = duel(playerCard, computerCard);
-
-    playerPlayedCardElement.innerHTML = `
-        <img
-            src="${playerCard.image}"
-            alt="${playerCard.name}"
-            class="w-full h-full object-cover rounded-xl"
-        >
-    `;
-
-    computerPlayedCardElement.innerHTML = `
-        <img
-            src="${computerCard.image}"
-            alt="${computerCard.name}"
-            class="w-full h-full object-cover rounded-xl"
-        >
-    `;
-
-    // Remove played cards using new arrays
-    playerCards = playerCards.filter(
-        (card, index) => index !== playerIndex
-    );
-
-    computerCards = computerCards.filter(
-        (card, index) => index !== computerIndex
-    );
-
-    if (result === "égalité") {
-        resultElement.textContent = "Égalité ! Rejouez.";
-
-        if (playerCards.length === 0) {
-            resultElement.textContent =
-                "Manche terminée : égalité !";
-
-            setTimeout(() => {
-                nextRound();
-
-                if (gameStarted) {
-                    duelLocked = false;
-                    displayCards();
-                }
-            }, 1000);
-
-            return;
-        }
-
-        setTimeout(() => {
-            currentDuel++;
-
-            firstPlayer =
-                firstPlayer === "Empereur" ? "Esclave" : "Empereur";
-
-            duelLocked = false;
-
-            updateInformation();
-            displayCards();
-        }, 1000);
-
-        return;
-    }
-
-    // Award points once when the round ends
-    if (result === "victoire") {
-        playerScore += playerCamp === "Empereur" ? 1 : 5;
-
-        resultElement.textContent =
-            "Vous avez gagné la manche !";
-    } else {
-        computerScore += computerCamp === "Empereur" ? 1 : 5;
-
-        resultElement.textContent =
-            "L'ordinateur a gagné la manche !";
-    }
-
-    updateInformation();
-
-    setTimeout(() => {
-        nextRound();
-
-        if (gameStarted) {
-            duelLocked = false;
-            displayCards();
-        }
-    }, 1000);
-}
-
-// START GAME
+// Démarrer une nouvelle partie
 function startGame() {
     playerCamp = "Empereur";
     computerCamp = "Esclave";
@@ -332,16 +80,111 @@ function startGame() {
     gameStarted = true;
     duelLocked = false;
 
-    playerPlayedCardElement.innerHTML = "";
-    computerPlayedCardElement.innerHTML = "";
-
-    resultElement.textContent = "La partie commence !";
-
-    updateInformation();
-    displayCards();
+    computerChoice = null;
 }
 
-// BUTTON EVENT
-if (startGameButton) {
-    startGameButton.addEventListener("click", startGame);
+// Changer les camps après chaque groupe de 3 manches
+function changeCamps() {
+    playerCamp = playerCamp === "Empereur"
+        ? "Esclave"
+        : "Empereur";
+
+    computerCamp = computerCamp === "Empereur"
+        ? "Esclave"
+        : "Empereur";
 }
+
+// Préparer la manche suivante
+function nextRound() {
+    currentRound++;
+
+    if (currentRound > 12) {
+        gameStarted = false;
+        duelLocked = true;
+        return;
+    }
+
+    if ((currentRound - 1) % 3 === 0) {
+        changeCamps();
+    }
+
+    playerCards = createHand(playerCamp);
+    computerCards = createHand(computerCamp);
+
+    currentDuel = 1;
+    computerChoice = null;
+
+    firstPlayer = "Empereur";
+}
+
+// Ajouter les points du gagnant
+function addScore(result) {
+    if (result === "victoire") {
+        playerScore += playerCamp === "Empereur" ? 1 : 5;
+    } else if (result === "défaite") {
+        computerScore += computerCamp === "Empereur" ? 1 : 5;
+    }
+}
+
+// Retirer une carte de la main
+function removeCard(hand, index) {
+    return hand.filter((card, i) => i !== index);
+}
+
+// Préparer le duel suivant après une égalité
+function nextDuel() {
+    currentDuel++;
+
+    firstPlayer = firstPlayer === "Empereur"
+        ? "Esclave"
+        : "Empereur";
+
+    computerChoice = null;
+    duelLocked = false;
+}
+
+// Déterminer le gagnant final
+function getGameResult() {
+    if (playerScore > computerScore) {
+        return "victoire";
+    }
+
+    if (computerScore > playerScore) {
+        return "défaite";
+    }
+
+    return "égalité";
+}
+
+// Récupérer l'état actuel du jeu
+function getGameState() {
+    return {
+        playerCards,
+        computerCards,
+        playerScore,
+        computerScore,
+        currentRound,
+        currentDuel,
+        playerCamp,
+        computerCamp,
+        firstPlayer,
+        gameStarted,
+        duelLocked,
+        computerChoice
+    };
+}
+// Exporter les fonctions et les données
+export {
+    cards,
+    createHand,
+    duel,
+    computerPlay,
+    startGame,
+    changeCamps,
+    nextRound,
+    addScore,
+    removeCard,
+    nextDuel,
+    getGameResult,
+    getGameState
+};
